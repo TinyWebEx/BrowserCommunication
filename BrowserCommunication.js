@@ -2,10 +2,9 @@
  * Communicates between different browser parts.
  *
  * @module modules/BrowserCommunication
- * @requires /common/modules/Logger
  * @requires ../data/BrowserCommunicationTypes
  */
-import { COMMUNICATION_MESSAGE_TYPE } from "./data/BrowserCommunicationTypes.js";
+import { COMMUNICATION_MESSAGE_TYPE } from "../data/BrowserCommunicationTypes.js";
 
 const callbacks = {};
 

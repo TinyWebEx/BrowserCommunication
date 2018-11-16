@@ -1,0 +1,21 @@
+{
+  "manifest_version": 2,
+  "name": "TinyWebEx BrowserCommunication library dev example",
+  "short_name": "TinyWebEx BrowserCommunication",
+  "version": "1.0",
+  "author": "rugk",
+
+  "description": "A tiny wrapper around the browser.runtime.onMessage, so you have a message type to separate different messages.",
+  "homepage_url": "https://github.com/tinywebex/BrowserCommunication",
+
+  // only for the unit test, we need to load libraries from CDNs
+  "content_security_policy": "default-src 'none'; style-src 'self' https://unpkg.com; script-src 'self' https://unpkg.com",
+
+  "permissions": [],
+  "applications": {
+    "gecko": {
+      // minimum version, because of module system
+      "strict_min_version": "60.0a1"
+    }
+  }
+}

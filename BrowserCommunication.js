@@ -83,13 +83,14 @@ function handleMessages(request, sender, sendResponse) {
     for (const callback of callbacks[messageType]) {
         const returnValue = callback(request, sender, sendResponse);
 
-        // notice if
+        // notice if return value is just "true"
         if (returnValue === true) {
             gotTrueAsReturn = true;
             continue;
         }
 
-        promises.push(callback(request, sender, sendResponse));
+        // return value should be a Promise
+        promises.push(returnValue);
     }
 
     // handle returning

@@ -1,7 +1,7 @@
 /**
  * Communicates between different browser parts.
  *
- * @module modules/BrowserCommunication
+ * @module BrowserCommunication
  * @requires ../data/BrowserCommunicationTypes
  */
 import { COMMUNICATION_MESSAGE_TYPE } from "../data/BrowserCommunicationTypes.js";

@@ -1,7 +1,8 @@
 /**
  * All available communication types.
  *
- * @module BrowserCommunication
+ * @public
+ * @module data/BrowserCommunicationTypes
  */
 
 /**

@@ -28,7 +28,16 @@ An example of the `BrowserCommunicationTypes.js` is saved in [`examples/BrowserC
 The only important function is basically `BrowserCommunication.addListener`. 
 Just pass to it a set-up [message type](#message-types) and a callback to actually register. For the former, it is obviously recommend to use the constant from there and pass it into the function.
 
-You can register as many listeners for one message type, as you want.
+You can register as many listeners for one message type, as you want. Example:
+
+```js
+const firstCallback = () => console.log('First callback called!!');
+const secondCallback = () => console.log('First callback called!!');
+BrowserCommunication.addListener('doSomething', firstCallback);
+BrowserCommunication.addListener('doSomething', secondCallback);
+
+// Both callbacks will be called everytime the 'doSomething' message be received
+```
 
 ## Removing listeners
 
@@ -36,8 +45,8 @@ If you want to remove an already added listener, just pass to the `BrowserCommun
 
 ```js
 const callback = () => console.log('Callback called!!');
-BrowserCommunication.addListener('someUsefulListener', callback);
+BrowserCommunication.addListener('doSomething', callback);
 
 // Then you can remove it
-BrowserCommunication.removeListener('someUsefulListener', callback);
+BrowserCommunication.removeListener('doSomething', callback);
 ```

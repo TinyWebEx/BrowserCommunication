@@ -32,4 +32,12 @@ You can register as many listeners for one message type, as you want.
 
 ## Removing listeners
 
-[Still TODO...](https://github.com/TinyWebEx/BrowserCommunication/issues/2)
+If you want to remove an already added listener, just pass to the `BrowserCommunication.removeListener` function the message type and the callback used on addListener. Example: 
+
+```js
+const callback = () => console.log('Callback called!!');
+BrowserCommunication.addListener('someUsefulListener', callback);
+
+// Then you can remove it
+BrowserCommunication.removeListener('someUsefulListener', callback);
+```

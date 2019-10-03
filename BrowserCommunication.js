@@ -132,6 +132,25 @@ export function addListener(messageType, callback) {
 }
 
 /**
+ * Remove an existent listener of a specific type.
+ *
+ * @public
+ * @param {COMMUNICATION_MESSAGE_TYPE} messageType type of message to receive
+ * @param {listenerCallback} callback
+ * @returns {void}
+ */
+export function removeListener(messageType, callback) {
+    checkMessageTypeVadility(messageType);
+
+    if (!(messageType in callbacks)) {
+        return;
+    }
+
+    callbacks[messageType] = callbacks[messageType]
+        .filter((addedCallback) => addedCallback !== callback);
+}
+
+/**
  * Init context menu module.
  *
  * Adds menu elements.

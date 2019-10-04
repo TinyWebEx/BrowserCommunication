@@ -33,8 +33,8 @@ You can register as many listeners for one message type, as you want. Example:
 ```js
 const firstCallback = () => console.log('First callback called!!');
 const secondCallback = () => console.log('First callback called!!');
-BrowserCommunication.addListener('doSomething', firstCallback);
-BrowserCommunication.addListener('doSomething', secondCallback);
+BrowserCommunication.addListener(COMMUNICATION_MESSAGE_TYPE.DO_SOMETHING, firstCallback);
+BrowserCommunication.addListener(COMMUNICATION_MESSAGE_TYPE.DO_SOMETHING, secondCallback);
 
 // Both callbacks will be called everytime the 'doSomething' message be received
 ```
@@ -45,8 +45,8 @@ If you want to remove an already added listener, just pass to the `BrowserCommun
 
 ```js
 const callback = () => console.log('Callback called!!');
-BrowserCommunication.addListener('doSomething', callback);
+BrowserCommunication.addListener(COMMUNICATION_MESSAGE_TYPE.DO_SOMETHING, callback);
 
 // Then you can remove it
-BrowserCommunication.removeListener('doSomething', callback);
+BrowserCommunication.removeListener(COMMUNICATION_MESSAGE_TYPE.DO_SOMETHING, callback);
 ```

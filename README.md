@@ -28,8 +28,25 @@ An example of the `BrowserCommunicationTypes.js` is saved in [`examples/BrowserC
 The only important function is basically `BrowserCommunication.addListener`. 
 Just pass to it a set-up [message type](#message-types) and a callback to actually register. For the former, it is obviously recommend to use the constant from there and pass it into the function.
 
-You can register as many listeners for one message type, as you want.
+You can register as many listeners for one message type, as you want. Example:
+
+```js
+const firstCallback = () => console.log('First callback called!!');
+const secondCallback = () => console.log('First callback called!!');
+BrowserCommunication.addListener(COMMUNICATION_MESSAGE_TYPE.DO_SOMETHING, firstCallback);
+BrowserCommunication.addListener(COMMUNICATION_MESSAGE_TYPE.DO_SOMETHING, secondCallback);
+
+// Both callbacks will be called everytime the 'doSomething' message be received
+```
 
 ## Removing listeners
 
-[Still TODO...](https://github.com/TinyWebEx/BrowserCommunication/issues/2)
+If you want to remove an already added listener, just pass to the `BrowserCommunication.removeListener` function the message type and the callback used on addListener. Example: 
+
+```js
+const callback = () => console.log('Callback called!!');
+BrowserCommunication.addListener(COMMUNICATION_MESSAGE_TYPE.DO_SOMETHING, callback);
+
+// Then you can remove it
+BrowserCommunication.removeListener(COMMUNICATION_MESSAGE_TYPE.DO_SOMETHING, callback);
+```

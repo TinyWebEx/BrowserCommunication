@@ -75,7 +75,7 @@ function handleMessages(request, sender, sendResponse) {
 
     if (!(messageType in callbacks) || callbacks[messageType].length === 0) {
         console.warn(`No callbacks for message type "${messageType}" registered.`);
-        return Promise.resolve();
+        return true;
     }
 
     // call all callbacks and keep return values

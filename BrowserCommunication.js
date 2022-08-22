@@ -38,7 +38,7 @@ const callbacks = {};
  */
 
 /**
- * Throws an error, if the message type is not known/known.
+ * Throws an error, if the message type is not known/unknown.
  *
  * @private
  * @param {COMMUNICATION_MESSAGE_TYPE} messageType type of message

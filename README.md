@@ -32,7 +32,7 @@ You can register as many listeners for one message type, as you want. Example:
 
 ```js
 const firstCallback = () => console.log('First callback called!!');
-const secondCallback = () => console.log('First callback called!!');
+const secondCallback = () => console.log('Second callback called!!');
 BrowserCommunication.addListener(COMMUNICATION_MESSAGE_TYPE.DO_SOMETHING, firstCallback);
 BrowserCommunication.addListener(COMMUNICATION_MESSAGE_TYPE.DO_SOMETHING, secondCallback);
 

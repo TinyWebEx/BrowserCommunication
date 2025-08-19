@@ -18,7 +18,7 @@ const callbacks = {};
  *
  * @callback sendResponseCallback
  * @param {string} message the response message, "may be any JSON-ifiable object"
- * @return {Promise}
+ * @return {Promise<any>|void}
  * @see {@link https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/Runtime/onMessage#Parameters}
  */
 
@@ -64,7 +64,7 @@ function checkMessageTypeVadility(messageType) {
  * @param {Object} request JSON-ifiable object of the message
  * @param {Object} sender the runtime.MessageSender, see {@link https://developer.mozilla.org/docs/Mozilla/Add-ons/WebExtensions/API/runtime/MessageSender}
  * @param {sendResponseCallback} sendResponse
- * @returns {Promise|true}
+ * @returns {Promise|boolean|void}
  * @see {@link https://developer.mozilla.org/docs/Mozilla/Add-ons/WebExtensions/API/Runtime/onMessage#Parameters}
  */
 function handleMessages(request, sender, sendResponse) {

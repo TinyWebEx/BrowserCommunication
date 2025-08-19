@@ -75,40 +75,25 @@ function handleMessages(request, sender, sendResponse) {
 
     if (!(messageType in callbacks) || callbacks[messageType].length === 0) {
         console.warn(`No callbacks for message type "${messageType}" registered.`);
-        return true;
+        return;
     }
 
     // call all callbacks and keep return values
     const promises = [];
-    let gotTrueAsReturn = false;
     for (const callback of callbacks[messageType]) {
         const returnValue = callback(request, sender, sendResponse);
 
-        // notice if return value is just "true"
-        if (returnValue === true) {
-            gotTrueAsReturn = true;
-            continue;
+        // If the callback returns a Promise, add it to the list
+        if (returnValue && typeof returnValue.then === "function") {
+            promises.push(returnValue);
         }
-
-        // return value should be a Promise
-        promises.push(returnValue);
     }
 
-    // handle returning
-    if (gotTrueAsReturn) {
-        if (callbacks[messageType].length !== 1) {
-            // if it was not the only callback, then show a real error
-            console.error(`At least one callback for message type "${messageType}" returned the legacy value "true".
-            As you have registered ${callbacks[messageType].length} listeners this may lead to errors.`);
-        } else {
-            // show warning as this behaviour is discouraged
-            console.warn(`At least one callback for message type "${messageType}" returned the legacy value "true". Please return a Promise instead.`);
-        }
-
-        return true;
+    if (promises.length > 0) {
+        // If there are async handlers, return a Promise
+        return Promise.all(promises);
     }
-
-    return Promise.all(promises);
+    // Otherwise, return nothing (void)
 }
 
 /**

@@ -10,7 +10,6 @@
  *
  * @public
  * @const
- * @type {Object.<string, string>}
  */
 export const COMMUNICATION_MESSAGE_TYPE = Object.freeze({
     DO_SOMETHING: "doSomething",

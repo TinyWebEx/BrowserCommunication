@@ -18,7 +18,7 @@ const callbacks = {};
  *
  * @callback sendResponseCallback
  * @param {string} message the response message, "may be any JSON-ifiable object"
- * @return {Promise}
+ * @return {Promise<any>|void}
  * @see {@link https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/Runtime/onMessage#Parameters}
  */
 
@@ -41,7 +41,7 @@ const callbacks = {};
  * Throws an error, if the message type is not known/unknown.
  *
  * @private
- * @param {COMMUNICATION_MESSAGE_TYPE} messageType type of message
+ * @param {COMMUNICATION_MESSAGE_TYPE[keyof COMMUNICATION_MESSAGE_TYPE]} messageType type of message to receive
  * @returns {void}
  * @throws {Error}
  */
@@ -64,7 +64,7 @@ function checkMessageTypeVadility(messageType) {
  * @param {Object} request JSON-ifiable object of the message
  * @param {Object} sender the runtime.MessageSender, see {@link https://developer.mozilla.org/docs/Mozilla/Add-ons/WebExtensions/API/runtime/MessageSender}
  * @param {sendResponseCallback} sendResponse
- * @returns {Promise|true}
+ * @returns {Promise|boolean|void}
  * @see {@link https://developer.mozilla.org/docs/Mozilla/Add-ons/WebExtensions/API/Runtime/onMessage#Parameters}
  */
 function handleMessages(request, sender, sendResponse) {
@@ -118,7 +118,7 @@ function handleMessages(request, sender, sendResponse) {
  * Actually it does call them in reverse as it uses a stack (LIFO) internally.
  *
  * @public
- * @param {COMMUNICATION_MESSAGE_TYPE} messageType type of message to receive
+ * @param {COMMUNICATION_MESSAGE_TYPE[keyof COMMUNICATION_MESSAGE_TYPE]} messageType type of message to receive
  * @param {listenerCallback} callback
  * @returns {void}
  */
@@ -135,7 +135,7 @@ export function addListener(messageType, callback) {
  * Remove an existent listener of a specific type.
  *
  * @public
- * @param {COMMUNICATION_MESSAGE_TYPE} messageType type of message to receive
+ * @param {COMMUNICATION_MESSAGE_TYPE[keyof COMMUNICATION_MESSAGE_TYPE]} messageType type of message to receive
  * @param {listenerCallback} callback
  * @returns {void}
  */

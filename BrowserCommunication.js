@@ -41,7 +41,7 @@ const callbacks = {};
  * Throws an error, if the message type is not known/unknown.
  *
  * @private
- * @param {COMMUNICATION_MESSAGE_TYPE} messageType type of message
+ * @param {COMMUNICATION_MESSAGE_TYPE[keyof COMMUNICATION_MESSAGE_TYPE]} messageType type of message to receive
  * @returns {void}
  * @throws {Error}
  */
@@ -118,7 +118,7 @@ function handleMessages(request, sender, sendResponse) {
  * Actually it does call them in reverse as it uses a stack (LIFO) internally.
  *
  * @public
- * @param {COMMUNICATION_MESSAGE_TYPE} messageType type of message to receive
+ * @param {COMMUNICATION_MESSAGE_TYPE[keyof COMMUNICATION_MESSAGE_TYPE]} messageType type of message to receive
  * @param {listenerCallback} callback
  * @returns {void}
  */
@@ -135,7 +135,7 @@ export function addListener(messageType, callback) {
  * Remove an existent listener of a specific type.
  *
  * @public
- * @param {COMMUNICATION_MESSAGE_TYPE} messageType type of message to receive
+ * @param {COMMUNICATION_MESSAGE_TYPE[keyof COMMUNICATION_MESSAGE_TYPE]} messageType type of message to receive
  * @param {listenerCallback} callback
  * @returns {void}
  */
